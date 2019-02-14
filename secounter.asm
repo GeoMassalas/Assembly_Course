@@ -1,15 +1,14 @@
-;
 ; AssemblerApplication2.asm
 ;
 ; Created: 16/1/2019 8:20:13 μμ
-; Author : lazyb
+; Author : gmassalas
 ;
 
 
 ; Replace with your application code
 
 init:
-		LDI r18, 0xFF				
+		LDI r18, 0xFF			
 
 		LDI r17, 0xFF				; portb as output
 		OUT DDRB, r17
@@ -17,8 +16,8 @@ init:
 		LDI r17, 0x00
 		STS TCCR1A, r17				; compare mode off // PWM mode off
 
-		LDI r17, 0x05
-		STS TCCR1B, r17				; prescaler 256 -- > 0x05
+		LDI r17, 0x04
+		STS TCCR1B, r17				; prescaler 256 -- > 0x04
 
 		LDI r19, 0x57				; 0x5762 <-- Innitialize TCNT register so we get exactly 1 second counter
 		LDI r21, 0x62
