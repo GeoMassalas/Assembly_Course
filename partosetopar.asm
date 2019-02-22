@@ -1,4 +1,4 @@
-;
+﻿;
 ; serialtoparallel.asm
 ;
 ; Created: 14/2/2019 8:36:40 μμ
@@ -22,10 +22,10 @@ init:
 		LDI r17, 0x00
 		STS TCCR1A, r17				; compare mode off // PWM mode off
 
-		LDI r17, 0x05
-		STS TCCR1B, r17				; prescaler 256 -- > 0x05
+		LDI r17, 0x04
+		STS TCCR1B, r17				; prescaler 128 -- > 0x05
 
-		LDI r19, 0x57				; 0x5762 <-- Initialize  TCNT register so we get exactly 1 second counter
+		LDI r19, 0x57				; 0x1762 <-- Initialize  TCNT register 
 		LDI r21, 0x62
 		LDI r20, 0x01
 clockset:
@@ -49,9 +49,8 @@ transfer:
 		BREQ endtr
 		rjmp transfer
 endtr:
-		LDI r20, 0x00
+		LDI r20, 0x00				; reinitialization and going back to start
 		OUT PORTA, r20
 		LDI r22, 0xF1
+		LDI r20, 0x01
 		rjmp clockset
-
-
