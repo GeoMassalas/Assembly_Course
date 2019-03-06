@@ -1,23 +1,23 @@
 ; AssemblerApplication2.asm
 ;
-; Created: 16/1/2019 8:20:13 ??
+; Created: 05/03/2019
 ; Author : gmassalas
 ;
 ; Replace with your application code
 jmp init
 .org 0x001E jmp TIMER1_OVF
-TIMER1_OVF:
-		in r22, SREG
+TIMER1_OVF:							; interrupt routine
+		in r22, SREG				; keep current SREG
 		cli
-		dec r18
-		OUT PORTB, r18
-		STS TCNT1H, r19		 
+		dec r18						; increase counter (complemetary logic)
+		OUT PORTB, r18		
+		STS TCNT1H, r19				;reinitialize counter
 		STS TCNT1L, r21
 		OUT SREG, r22
 		reti
 
 init:
-		LDI r18, HIGH(RAMEND)
+		LDI r18, HIGH(RAMEND)		;initialize stack pointer
 		OUT SPH, r18
 		LDI r18, LOW(RAMEND)
 		OUT SPH, r18		
@@ -38,7 +38,7 @@ init:
 		STS TCNT1L, r21
 		STS TIMSK1, r20
 		SEI
-main:
+main:								; main loop
 		nop
 		RJMP main
 
