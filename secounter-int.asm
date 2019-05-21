@@ -4,8 +4,77 @@
 ; Author : gmassalas
 ;
 ; Replace with your application code
-jmp init
-.org 0x001E jmp TIMER1_OVF
+			jmp init
+			nop
+			reti			;INT0				; 
+			nop
+			reti			;INT1	
+			nop
+			reti			;INT2	
+			nop
+			reti			;PCINT0
+			nop
+			reti			;PCINT1
+			nop
+			reti			;PCINT2
+			nop
+			reti			;PCINT3
+			nop
+			reti			;WDT
+			nop
+			reti			;TIMER2_COMPA
+			nop
+			reti			;TIMER2_COMPB
+			nop
+			reti			;TIMER2_OVF
+			nop
+			reti			;TIMER1_CAPT
+			nop
+			reti			;TIMER1COMPA
+			nop
+			reti			;TIMER1COMPB
+			nop
+			jmp TIMER1_OVF	;TIMER1_OVF
+			nop
+			reti			;TIMER0_COMPA
+			nop
+			reti			;TIMER0_COMPB
+			nop
+			reti			;TIMER0_OVF
+			nop
+			reti			;SPISTC
+			nop
+			reti			;USART0_RX
+			nop
+			reti			;USART0_UDRE
+			nop
+			reti			;USART0_TX
+			nop
+			reti			;ANALOG_COMP
+			nop
+			reti			;ADC
+			nop
+			reti			;EE_READY
+			nop
+			reti			;TWI
+			nop
+			reti			;SPM_READY
+			nop
+			reti			;USART1_RX
+			nop
+			reti			;USART1_UDRE
+			nop
+			reti			;USART1_TX
+			nop
+			reti			;TIMER3_CAPT
+			nop
+			reti			;TIMER3_COMPA
+			nop
+			reti			;TIMER3_COMPB
+			nop
+			reti			;TIMER3_OVF
+			nop
+
 TIMER1_OVF:							; interrupt routine
 		in r22, SREG				; keep current SREG
 		cli
