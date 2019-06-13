@@ -1,4 +1,4 @@
-;
+﻿;
 ; AssemblerApplication1.asm
 ;
 ; Created: 9/1/2019 4:23:36 μμ
@@ -34,3 +34,4 @@ loop:
 		COM R17
 		OUT PORTB, R17
 		RJMP AdscSet
+
